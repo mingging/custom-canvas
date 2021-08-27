@@ -29,7 +29,7 @@ const Index = () => {
 
     const handleAddText = () => {
         canvas.isDrawingMode = false
-        var newText = new fabric.Textbox('Hello Text!.', {
+        const newText = new fabric.Textbox('Hello Text!.', {
             fontSize: 27,
             top: 10,
             left: 10,
@@ -40,6 +40,29 @@ const Index = () => {
         newText.enterEditing();
         newText.setSelectionStart(newText.text?.length as number);
         newText.setSelectionEnd(newText.text?.length as number);
+    }
+
+    const handleAddCircle = () => {
+        canvas.isDrawingMode = false
+        const rect = new fabric.Circle({
+            width: 500,
+            height: 500,
+            radius: 50,
+            stroke: 'black',
+            fill: ''
+        });
+        canvas.add(rect)
+    }
+
+    const handelAddSquare = () => {
+        canvas.isDrawingMode = false
+        const rect = new fabric.Rect({
+            width: 100,
+            height: 100,
+            stroke: 'black',
+            fill: ''
+        });
+        canvas.add(rect)
     }
 
     useEffect(() => {
@@ -58,6 +81,11 @@ const Index = () => {
 
 
             <button onClick={handleAddText}>Add Text</button>
+            <ColorBoxGroup>
+                <Circle onClick={handleAddCircle} />
+                <Square onClick={handelAddSquare} />
+            </ColorBoxGroup>
+
 
             <canvas id="canvas" />
         </div>
@@ -74,6 +102,21 @@ const ColorBox = styled.div`
 const ColorBoxGroup = styled.div`
   display: flex;
   align-content: center;
+`
+
+const Circle = styled.div`
+  width: 30px;
+  height: 30px;
+  border: 2px solid #000;
+  border-radius: 50px;
+  margin: 5px;
+`
+const Square = styled.div`
+  width: 30px;
+  height: 30px;
+  border: 2px solid #000;
+  border-radius: 2px;
+  margin: 5px;
 `
 
 export default Index
