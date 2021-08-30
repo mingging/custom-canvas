@@ -1,6 +1,6 @@
 import React, {useCallback, useEffect, useState} from "react";
 import styled from '@emotion/styled'
-import {fabric} from 'fabric'
+import {fabric} from "fabric";
 
 
 
@@ -65,6 +65,11 @@ const Index = () => {
         canvas.add(rect)
     }
 
+    const handleRemove = () => {
+        canvas.clear()
+        canvas.renderAll();
+    }
+
     useEffect(() => {
         canvas.freeDrawingBrush.width = 15
     }, [canvas])
@@ -85,6 +90,8 @@ const Index = () => {
                 <Circle onClick={handleAddCircle} />
                 <Square onClick={handelAddSquare} />
             </ColorBoxGroup>
+
+            <button onClick={handleRemove}>Eraser</button>
 
 
             <canvas id="canvas" />
